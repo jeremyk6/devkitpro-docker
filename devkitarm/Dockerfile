@@ -1,7 +1,8 @@
-FROM devkitpro/toolchain-base
+FROM jeremyk6/devkitpro-toolchain-base
 
 MAINTAINER Dave Murphy <davem@devkitpro.org>
 
+RUN sudo ln -s /proc/self/mounts /etc/mtab
 RUN dkp-pacman -Syyu --noconfirm 3ds-dev nds-dev gp32-dev gba-dev gp2x-dev && \
     dkp-pacman -S --needed --noconfirm 3ds-portlibs nds-portlibs armv4t-portlibs && \
     yes | dkp-pacman -Scc
